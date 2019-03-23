@@ -1,0 +1,20 @@
+build: false
+
+environment:
+    PYTHON: "C:\\Python37"
+
+    matrix:
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+install:
+  - set PATH=%PYTHON%;%PYTHON%/Scripts/;%PATH%
+
+test_script:
+    - python make.py
+    - python make.py clang
+    - python make.py clean
+    - python make.py conan
+    - python make.py dist
+    - python make.py djinni
+    - python make.py help
+    - python make.py target

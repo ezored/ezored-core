@@ -1,0 +1,14 @@
+os: linux
+dist: xenial
+language: python
+python: "3.7"
+script:
+  - python make.py
+  - python make.py clang
+  - python make.py clean
+  - python make.py conan
+  - python make.py dist
+  - python make.py djinni
+  - python make.py help
+  - python make.py target
+
