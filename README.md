@@ -1,4 +1,4 @@
-# ezored
+# ezored core
 
 ![](extras/images/doc-logo.png)
 
