@@ -1,10 +1,10 @@
 """Module: Command"""
 
+import glob
 import importlib
+import os
 import sys
 from collections import OrderedDict
-
-import cmd
 
 ezored_commands = OrderedDict()
 
@@ -20,10 +20,16 @@ def get_all_commands(ezored_path, proj_path, args):
     """
     sys.path.insert(0, ezored_path)
 
-    command_list = cmd.__all__
+    command_list = glob.glob(os.path.join(ezored_path, 'cmd', '*.py'))
 
     if command_list:
-        for command_name in command_list:
+        for command_path in command_list:
+            command_name = os.path.basename(command_path)
+            command_name = os.path.splitext(command_name)[0]
+
+            if command_name.startswith('__'):
+                continue
+
             command_module = importlib.import_module('cmd.{0}'.format(command_name))
             ezored_commands[command_name] = command_module
 
