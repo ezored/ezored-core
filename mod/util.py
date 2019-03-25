@@ -24,3 +24,20 @@ def readable_file_size(num, suffix='b'):
         num /= 1024.0
 
     return "%.1f%s%s" % (num, 'Yi', suffix)
+
+
+# -----------------------------------------------------------------------------
+def list_has_key(args, key):
+    """
+    Check is args have of not a key
+    :param args:
+    :param key:
+    :return bool
+    """
+    if not args or not key:
+        return False
+
+    if key in args:
+        return True
+
+    return False
