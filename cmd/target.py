@@ -97,4 +97,4 @@ def show_help(params):
 
 # -----------------------------------------------------------------------------
 def get_description(params):
-    return 'Run target with verb'
+    return 'Run target verb'

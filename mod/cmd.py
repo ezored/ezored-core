@@ -6,6 +6,8 @@ import os
 import sys
 from collections import OrderedDict
 
+from app import const
+
 ezored_commands = OrderedDict()
 
 
@@ -18,6 +20,7 @@ def get_all_commands(ezored_path, proj_path, args):
     :param ezored_path: ezored path
     :param args: call arguments
     """
+    # search on ezored path
     sys.path.insert(0, ezored_path)
 
     command_list = glob.glob(os.path.join(ezored_path, 'cmd', '*.py'))
@@ -30,7 +33,39 @@ def get_all_commands(ezored_path, proj_path, args):
             if command_name.startswith('__'):
                 continue
 
-            command_module = importlib.import_module('cmd.{0}'.format(command_name))
+            command_module = importlib.import_module('cmd.{0}'.format(
+                command_name
+            ))
+
+            ezored_commands[command_name] = command_module
+
+    # search on project path
+    project_command_path = os.path.join(
+        proj_path,
+        const.DIR_NAME_FILES,
+    )
+
+    sys.path.insert(0, project_command_path)
+
+    command_list = glob.glob(os.path.join(
+        project_command_path,
+        const.DIR_NAME_FILES_COMMANDS,
+        '*.py',
+    ))
+
+    if command_list:
+        for command_path in command_list:
+            command_name = os.path.basename(command_path)
+            command_name = os.path.splitext(command_name)[0]
+
+            if command_name.startswith('__'):
+                continue
+
+            command_module = importlib.import_module('{0}.{1}'.format(
+                const.DIR_NAME_FILES_COMMANDS,
+                command_name,
+            ))
+
             ezored_commands[command_name] = command_module
 
 
