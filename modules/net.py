@@ -2,8 +2,8 @@
 
 import sys
 
-from mod import log
-from mod import util
+from modules import log
+from modules import util
 
 if sys.version_info >= (3,):
     import urllib.request as urllib2

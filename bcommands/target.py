@@ -3,10 +3,10 @@
 import os
 
 import app.const as const
-from mod import log
-from mod import runner
-from mod import target
-from mod import util
+from modules import log
+from modules import runner
+from modules import target
+from modules import util
 
 
 # -----------------------------------------------------------------------------

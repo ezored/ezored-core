@@ -1,4 +1,4 @@
-"""Module: Command"""
+"""Module: Base commands"""
 
 import glob
 import importlib
@@ -23,7 +23,7 @@ def get_all_commands(ezored_path, proj_path, args):
     # search on ezored path
     sys.path.insert(0, ezored_path)
 
-    command_list = glob.glob(os.path.join(ezored_path, 'cmd', '*.py'))
+    command_list = glob.glob(os.path.join(ezored_path, 'bcommands', '*.py'))
 
     if command_list:
         for command_path in command_list:
@@ -33,7 +33,7 @@ def get_all_commands(ezored_path, proj_path, args):
             if command_name.startswith('__'):
                 continue
 
-            command_module = importlib.import_module('cmd.{0}'.format(
+            command_module = importlib.import_module('bcommands.{0}'.format(
                 command_name
             ))
 

@@ -5,7 +5,7 @@ import os
 import subprocess
 import sys
 
-from mod import log
+from modules import log
 
 
 # -----------------------------------------------------------------------------

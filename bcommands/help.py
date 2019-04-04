@@ -2,9 +2,9 @@
 
 import sys
 
-from mod import cmd
-from mod import log
-from mod.cmd import ezored_commands
+from modules import command
+from modules import log
+from modules.command import ezored_commands
 
 
 # -----------------------------------------------------------------------------
@@ -24,7 +24,7 @@ def run(params):
             'command_name': command_name,
         }
 
-        description = cmd.run_method(command_name, 'get_description', params)
+        description = command.run_method(command_name, 'get_description', params)
 
         print('  {name:{width}}  {descr}'.format(
             name=command_name,

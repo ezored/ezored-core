@@ -2,8 +2,8 @@
 
 import os
 
-from mod import file
-from mod import log
+from modules import file
+from modules import log
 
 
 # -----------------------------------------------------------------------------
