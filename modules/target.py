@@ -60,7 +60,7 @@ def get_all_target_verbs(proj_path, target_name):
 
 
 # -----------------------------------------------------------------------------
-def get_target_config(proj_path, target_name):
+def get_target_config(proj_path, target_name, params):
     config_folder = os.path.join(
         proj_path,
         const.DIR_NAME_FILES,
@@ -79,7 +79,7 @@ def get_target_config(proj_path, target_name):
             path=config_folder,
             module_name=module_name,
             command_name='run',
-            command_params={},
+            command_params=params,
             show_log=False,
             show_error_log=True,
             throw_error=True,
