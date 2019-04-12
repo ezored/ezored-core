@@ -57,32 +57,3 @@ def get_all_target_verbs(proj_path, target_name):
 
     results.sort()
     return results
-
-
-# -----------------------------------------------------------------------------
-def get_target_config(proj_path, target_name, params):
-    config_folder = os.path.join(
-        proj_path,
-        const.DIR_NAME_FILES,
-        const.DIR_NAME_FILES_CONFIG,
-    )
-
-    module_name = 'target_{0}'.format(target_name)
-
-    target_config_file = os.path.join(
-        config_folder,
-        module_name,
-    )
-
-    if file.file_exists(target_config_file):
-        return runner.run_external(
-            path=config_folder,
-            module_name=module_name,
-            command_name='run',
-            command_params=params,
-            show_log=False,
-            show_error_log=True,
-            throw_error=True,
-        )
-
-    return {}
