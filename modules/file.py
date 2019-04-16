@@ -189,7 +189,7 @@ def copy_dir(src, dst, symlinks=False, ignore=None, ignore_file=None):
             except:
                 pass  # lchmod not available
         elif os.path.isdir(s):
-            copy_dir(s, d, symlinks, ignore)
+            copy_dir(s, d, symlinks, ignore, ignore_file)
         else:
             if ignore_file is not None:
                 ignored_file = ignore_file(s)
