@@ -164,7 +164,7 @@ def dir_exists(path):
 
 
 # -----------------------------------------------------------------------------
-def copy_dir(src, dst, symlinks=False, ignore=None):
+def copy_dir(src, dst, symlinks=False, ignore=None, ignore_file=None):
     if not os.path.exists(dst):
         os.makedirs(dst)
         shutil.copystat(src, dst)
@@ -191,7 +191,13 @@ def copy_dir(src, dst, symlinks=False, ignore=None):
         elif os.path.isdir(s):
             copy_dir(s, d, symlinks, ignore)
         else:
-            shutil.copy2(s, d)
+            if ignore_file is not None:
+                ignored_file = ignore_file(s)
+            else:
+                ignored_file = False
+
+            if not ignored_file:
+                shutil.copy2(s, d)
 
 
 # -----------------------------------------------------------------------------
