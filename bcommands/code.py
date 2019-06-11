@@ -1,4 +1,4 @@
-"""Clang manager tool"""
+"""Code manager tool"""
 
 import os
 import subprocess
@@ -18,7 +18,7 @@ def run(params):
 
         if action:
             if action == 'format':
-                clang_format(params)
+                code_format(params)
             else:
                 show_help(params)
         else:
@@ -28,7 +28,7 @@ def run(params):
 
 
 # -----------------------------------------------------------------------------
-def clang_format(params):
+def code_format(params):
     check_clang_format()
 
     proj_path = params['proj_path']
@@ -100,4 +100,4 @@ def show_help(params):
 
 # -----------------------------------------------------------------------------
 def get_description(params):
-    return 'Clang manager tool'
+    return 'Code manager tool'
