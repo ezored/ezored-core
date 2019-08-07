@@ -1,13 +1,14 @@
 build: false
 
 environment:
-    PYTHON: "C:\\Python37"
+    PYTHON_HOME: "C:\\Python37"
 
     matrix:
         - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_VISUAL_VERSIONS: 15
 
 install:
-    - set PATH=%PYTHON%;%PYTHON%/Scripts/;%PATH%
+    - set PATH=%PYTHON_HOME%;%PYTHON_HOME%/Scripts/;%PATH%
 
 test_script:
     - python make.py
