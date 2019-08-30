@@ -78,8 +78,8 @@ def code_format(params):
     if has_tool:
         log.info("Formating python files...")
 
-        run_args = ["black", "main.py"]
-        run_args = ["black", "files/"]
+        run_args = ["black", "-q", "main.py"]
+        run_args = ["black", "-q", "files/"]
         runner.run(run_args, proj_path)
         log.ok()
 
