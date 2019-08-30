@@ -8,7 +8,7 @@ def filter_list(full_list, excludes):
 
 
 # -----------------------------------------------------------------------------
-def readable_file_size(num, suffix='b'):
+def readable_file_size(num, suffix="b"):
     """
     Readable file size
     :param num: Bytes value
@@ -17,13 +17,13 @@ def readable_file_size(num, suffix='b'):
     :type suffix: str
     :rtype: str
     """
-    for unit in ['', 'k', 'M', 'G', 'T', 'P', 'E', 'Z']:
+    for unit in ["", "k", "M", "G", "T", "P", "E", "Z"]:
         if abs(num) < 1024.0:
             return "%3.1f %s%s" % (num, unit, suffix)
 
         num /= 1024.0
 
-    return "%.1f%s%s" % (num, 'Yi', suffix)
+    return "%.1f%s%s" % (num, "Yi", suffix)
 
 
 # -----------------------------------------------------------------------------

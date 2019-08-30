@@ -1,3 +1,3 @@
 """modules"""
 
-__all__ = ['const']
+__all__ = ["const"]

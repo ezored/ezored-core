@@ -104,10 +104,10 @@ def root_dir():
 # -----------------------------------------------------------------------------
 def normalize_path(path):
     if path:
-        path = path.replace('\\', '/')
+        path = path.replace("\\", "/")
         return path
     else:
-        ''
+        ""
 
 
 # -----------------------------------------------------------------------------
@@ -117,7 +117,7 @@ def create_dir(path):
 
 
 # -----------------------------------------------------------------------------
-def write_to_file(dir_path, filename, content, method='w'):
+def write_to_file(dir_path, filename, content, method="w"):
     full_file_path = os.path.join(dir_path, filename)
     remove_file(full_file_path)
     create_dir(dir_path)
@@ -128,7 +128,7 @@ def write_to_file(dir_path, filename, content, method='w'):
 
 
 # -----------------------------------------------------------------------------
-def read_file(file_path, method='r'):
+def read_file(file_path, method="r"):
     with open(file_path, method) as f:
         content = f.read()
         f.close()
@@ -144,7 +144,7 @@ def copy_file(from_path, to_path):
 
 # -----------------------------------------------------------------------------
 def home_dir():
-    return os.path.expanduser('~')
+    return os.path.expanduser("~")
 
 
 # -----------------------------------------------------------------------------

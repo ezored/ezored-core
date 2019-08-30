@@ -10,10 +10,13 @@ from modules import log
 
 # -----------------------------------------------------------------------------
 def run_external(
-    path, module_name, command_name,
-    command_params, show_log=False,
+    path,
+    module_name,
+    command_name,
+    command_params,
+    show_log=False,
     show_error_log=False,
-    throw_error=False
+    throw_error=False,
 ):
     """
     Execute external command inside path and return the command result.
@@ -43,14 +46,15 @@ def run_external(
         result = command(params=command_params)
 
         if show_log:
-            log.normal('Command "{0}" finished with success'.format(
-                command_name
-            ))
+            log.normal('Command "{0}" finished with success'.format(command_name))
     except Exception as e:
         if show_error_log:
-            log.error('Error while call "{0}" on module "{1}": {2}'.format(
-                command_name, module_name, e
-            ), fatal=(not throw_error))
+            log.error(
+                'Error while call "{0}" on module "{1}": {2}'.format(
+                    command_name, module_name, e
+                ),
+                fatal=(not throw_error),
+            )
 
         if throw_error:
             raise
@@ -73,22 +77,14 @@ def run_external(
 
 # -----------------------------------------------------------------------------
 def run(args, cwd):
-    ret = subprocess.call(
-        args,
-        cwd=cwd,
-    )
+    ret = subprocess.call(args, cwd=cwd)
 
     if ret > 0:
         log.normal(
-            '{2}COMMAND:{3} {0}\n' \
-            '{4}WORKING DIR:{5} {1}'.format(
-                ' '.join(args),
-                cwd,
-                log.YELLOW,
-                log.ENDC,
-                log.YELLOW,
-                log.ENDC,
+            "{2}COMMAND:{3} {0}\n"
+            "{4}WORKING DIR:{5} {1}".format(
+                " ".join(args), cwd, log.YELLOW, log.ENDC, log.YELLOW, log.ENDC
             )
         )
 
-        log.error('Command execution has failed')
+        log.error("Command execution has failed")

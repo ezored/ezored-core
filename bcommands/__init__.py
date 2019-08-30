@@ -1,3 +1,3 @@
 """modules"""
 
-__all__ = ['clang', 'clean', 'conan', 'dist', 'djinni', 'help', 'target']
+__all__ = ["clang", "clean", "conan", "dist", "djinni", "help", "target"]

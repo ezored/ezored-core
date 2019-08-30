@@ -6,23 +6,24 @@ import zipfile
 
 
 # -----------------------------------------------------------------------------
-def unpack(src_path, dst_path, filename=''):
-    if '.zip' in src_path:
-        with zipfile.ZipFile(src_path, 'r') as archive:
-            archive.extractall(dst_path + ('' if len(filename) == 0 else '/' + filename))
+def unpack(src_path, dst_path, filename=""):
+    if ".zip" in src_path:
+        with zipfile.ZipFile(src_path, "r") as archive:
+            archive.extractall(
+                dst_path + ("" if len(filename) == 0 else "/" + filename)
+            )
             archive.close()
-    elif '.tgz' or '.bz2' in src_path:
-        with tarfile.TarFile(src_path, 'r') as archive:
-            archive.extractall(dst_path + ('' if len(filename) == 0 else '/' + filename))
+    elif ".tgz" or ".bz2" in src_path:
+        with tarfile.TarFile(src_path, "r") as archive:
+            archive.extractall(
+                dst_path + ("" if len(filename) == 0 else "/" + filename)
+            )
             archive.close()
 
 
 # -----------------------------------------------------------------------------
 def make_zipfile(output_filename, source_dir):
-    exclude_list = [
-        'Thumbs.db',
-        '.DS_Store',
-    ]
+    exclude_list = ["Thumbs.db", ".DS_Store"]
 
     relroot = os.path.abspath(os.path.join(source_dir, os.pardir))
 
