@@ -81,6 +81,7 @@ def code_format(params):
         run_args = ["black", "main.py"]
         run_args = ["black", "files/"]
         runner.run(run_args, proj_path)
+        log.ok()
 
 
 # -----------------------------------------------------------------------------
