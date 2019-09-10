@@ -77,7 +77,7 @@ def code_format(params):
 
     if has_tool:
         dir_list = [
-            {"path": os.path.join(proj_path), "patterns": ["make.py"]},
+            {"path": proj_path, "patterns": ["make.py"]},
             {
                 "path": os.path.join(proj_path, const.DIR_NAME_FILES),
                 "patterns": ["*.py"],
