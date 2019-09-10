@@ -49,7 +49,7 @@ def code_format(params):
         ]
 
         if dir_list:
-            log.info("Formating c++ files...")
+            log.info("Formating C++ files...")
 
             for dir_item in dir_list:
                 patterns = dir_item["patterns"]
@@ -70,18 +70,43 @@ def code_format(params):
 
             log.ok()
         else:
-            log.error("No c++ files found to format")
+            log.error("No C++ files found to format")
 
     # format python files
     has_tool = check_php_formatter()
 
     if has_tool:
-        log.info("Formating python files...")
+        dir_list = [
+            {"path": os.path.join(proj_path), "patterns": ["*.py"]},
+            {
+                "path": os.path.join(proj_path, const.DIR_NAME_FILES),
+                "patterns": ["*.py"],
+            },
+        ]
 
-        run_args = ["black", "-q", "main.py"]
-        run_args = ["black", "-q", "files/"]
-        runner.run(run_args, proj_path)
-        log.ok()
+        if dir_list:
+            log.info("Formating Python files...")
+
+            for dir_item in dir_list:
+                patterns = dir_item["patterns"]
+
+                for pattern_item in patterns:
+                    files = file.find_files(dir_item["path"], pattern_item)
+
+                    for file_item in files:
+                        log.info(
+                            'Formatting file "{0}"...'.format(
+                                os.path.relpath(file_item)
+                            )
+                        )
+
+                        run_args = ["black", "-q", file_item]
+
+                        runner.run(run_args, proj_path)
+
+            log.ok()
+        else:
+            log.error("No Python files found to format")
 
 
 # -----------------------------------------------------------------------------
