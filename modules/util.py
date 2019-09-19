@@ -41,3 +41,10 @@ def list_has_key(args, key):
         return True
 
     return False
+
+
+# -----------------------------------------------------------------------------
+def get_arg_value(key, args):
+    for arg in args:
+        if arg and arg.startswith("{0}=".format(key)):
+            return arg[(len(key) + 1) :]
