@@ -8,7 +8,11 @@
 
 ## About
 
-**Code reuse. Write once. Run everywhere.**
+**Write once. Compile anywhere.**
+
+C++ cross-platform development toolkit. Use the same code on mobile and desktop applications.
+
+Ezored is the most convenient and fatest way to start your C++ project for mobile and desktop.
 
 **Ezored core** is the engine behind **ezored** project.
 
